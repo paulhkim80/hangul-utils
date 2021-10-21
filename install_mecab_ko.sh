@@ -22,17 +22,17 @@ cd $MECAB_PATH/*
 ./configure
 sudo make install -j4
 
-# automake
-if ! command_exists automake || [ $(automake --version | grep automake | rev | cut -d ' ' -f 1 | rev) != "$AUTOMAKE_VERSION" ]
-then
-    rm -rf $AUTOMAKE_PATH
-    wget http://ftpmirror.gnu.org/automake/automake-${AUTOMAKE_VERSION}.tar.gz -O $AUTOMAKE_PATH.tar.gz
-    mkdir -p $AUTOMAKE_PATH
-    tar zxvf $AUTOMAKE_PATH.tar.gz -C $AUTOMAKE_PATH
-    cd $AUTOMAKE_PATH/automake-${AUTOMAKE_VERSION}
-    ./configure
-    sudo make install -j4
-fi
+# # automake
+# if ! command_exists automake || [ $(automake --version | grep automake | rev | cut -d ' ' -f 1 | rev) != "$AUTOMAKE_VERSION" ]
+# then
+#     rm -rf $AUTOMAKE_PATH
+#     wget http://ftpmirror.gnu.org/automake/automake-${AUTOMAKE_VERSION}.tar.gz -O $AUTOMAKE_PATH.tar.gz
+#     mkdir -p $AUTOMAKE_PATH
+#     tar zxvf $AUTOMAKE_PATH.tar.gz -C $AUTOMAKE_PATH
+#     cd $AUTOMAKE_PATH/automake-${AUTOMAKE_VERSION}
+#     ./configure
+#     sudo make install -j4
+# fi
 
 
 
