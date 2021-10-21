@@ -43,6 +43,7 @@ mkdir -p $MECAB_DIC_PATH
 tar zxvf $MECAB_DIC_PATH.tar.gz -C $MECAB_DIC_PATH
 cd $MECAB_DIC_PATH/mecab*
 
+echo "printf ld.so.conf"
 printf "include /etc/ld.so.conf.d/*.conf\n/usr/local/lib" > /etc/ld.so.conf 
 ldconfig
 
