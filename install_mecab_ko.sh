@@ -19,40 +19,40 @@ wget $MECAB_URL -O $MECAB_PATH.tar.gz
 mkdir -p $MECAB_PATH
 tar zxvf $MECAB_PATH.tar.gz -C $MECAB_PATH
 cd $MECAB_PATH/*
-./configure
 printf "include /etc/ld.so.conf.d/*.conf\n/usr/local/lib" > /etc/ld.so.conf 
 ldconfig
-# sudo make install -j4
+./configure
+sudo make install -j4
 
-# # automake
-# if ! command_exists automake || [ $(automake --version | grep automake | rev | cut -d ' ' -f 1 | rev) != "$AUTOMAKE_VERSION" ]
-# then
-#     rm -rf $AUTOMAKE_PATH
-#     wget http://ftpmirror.gnu.org/automake/automake-${AUTOMAKE_VERSION}.tar.gz -O $AUTOMAKE_PATH.tar.gz
-#     mkdir -p $AUTOMAKE_PATH
-#     tar zxvf $AUTOMAKE_PATH.tar.gz -C $AUTOMAKE_PATH
-#     cd $AUTOMAKE_PATH/automake-${AUTOMAKE_VERSION}
-#     ./configure
-#     sudo make install -j4
-# fi
+# automake
+if ! command_exists automake || [ $(automake --version | grep automake | rev | cut -d ' ' -f 1 | rev) != "$AUTOMAKE_VERSION" ]
+then
+    rm -rf $AUTOMAKE_PATH
+    wget http://ftpmirror.gnu.org/automake/automake-${AUTOMAKE_VERSION}.tar.gz -O $AUTOMAKE_PATH.tar.gz
+    mkdir -p $AUTOMAKE_PATH
+    tar zxvf $AUTOMAKE_PATH.tar.gz -C $AUTOMAKE_PATH
+    cd $AUTOMAKE_PATH/automake-${AUTOMAKE_VERSION}
+    ./configure
+    sudo make install -j4
+fi
 
 
 
-# # mecab-ko-dic
-# rm -rf $MECAB_DIC_PATH $MECAB_DIC_PATH.tar.gz
-# wget $MECAB_DIC_URL -O $MECAB_DIC_PATH.tar.gz
-# mkdir -p $MECAB_DIC_PATH
-# tar zxvf $MECAB_DIC_PATH.tar.gz -C $MECAB_DIC_PATH
-# cd $MECAB_DIC_PATH/mecab*
+# mecab-ko-dic
+rm -rf $MECAB_DIC_PATH $MECAB_DIC_PATH.tar.gz
+wget $MECAB_DIC_URL -O $MECAB_DIC_PATH.tar.gz
+mkdir -p $MECAB_DIC_PATH
+tar zxvf $MECAB_DIC_PATH.tar.gz -C $MECAB_DIC_PATH
+cd $MECAB_DIC_PATH/mecab*
 
-# echo "printf ld.so.conf"
-# printf "include /etc/ld.so.conf.d/*.conf\n/usr/local/lib" > /etc/ld.so.conf 
-# ldconfig
+echo "printf ld.so.conf"
+printf "include /etc/ld.so.conf.d/*.conf\n/usr/local/lib" > /etc/ld.so.conf 
+ldconfig
 
-# ./autogen.sh
-# ./configure
-# echo "dicdir=${MECAB_DIC_DICDIR}" > /usr/local/etc/mecabrc
+./autogen.sh
+./configure
+echo "dicdir=${MECAB_DIC_DICDIR}" > /usr/local/etc/mecabrc
 
-# sudo make install -j4
+sudo make install -j4
 
 
