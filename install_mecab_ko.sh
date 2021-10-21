@@ -34,6 +34,8 @@ then
     sudo make install -j4
 fi
 
+
+
 # mecab-ko-dic
 rm -rf $MECAB_DIC_PATH $MECAB_DIC_PATH.tar.gz
 wget $MECAB_DIC_URL -O $MECAB_DIC_PATH.tar.gz
@@ -43,6 +45,10 @@ cd $MECAB_DIC_PATH/mecab*
 ./autogen.sh
 ./configure
 echo "dicdir=${MECAB_DIC_DICDIR}" > /usr/local/etc/mecabrc
+
+printf "include /etc/ld.so.conf.d/*.conf\n/usr/local/lib" > /etc/ld.so.conf 
+ldconfig
+
 sudo make install -j4
 
 
