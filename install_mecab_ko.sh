@@ -22,7 +22,7 @@ cd $MECAB_PATH/*
 ./configure
 printf "include /etc/ld.so.conf.d/*.conf\n/usr/local/lib" > /etc/ld.so.conf 
 ldconfig
-sudo make install -j4
+# sudo make install -j4
 
 # # automake
 # if ! command_exists automake || [ $(automake --version | grep automake | rev | cut -d ' ' -f 1 | rev) != "$AUTOMAKE_VERSION" ]
