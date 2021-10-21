@@ -36,21 +36,21 @@ fi
 
 
 
-# mecab-ko-dic
-rm -rf $MECAB_DIC_PATH $MECAB_DIC_PATH.tar.gz
-wget $MECAB_DIC_URL -O $MECAB_DIC_PATH.tar.gz
-mkdir -p $MECAB_DIC_PATH
-tar zxvf $MECAB_DIC_PATH.tar.gz -C $MECAB_DIC_PATH
-cd $MECAB_DIC_PATH/mecab*
+# # mecab-ko-dic
+# rm -rf $MECAB_DIC_PATH $MECAB_DIC_PATH.tar.gz
+# wget $MECAB_DIC_URL -O $MECAB_DIC_PATH.tar.gz
+# mkdir -p $MECAB_DIC_PATH
+# tar zxvf $MECAB_DIC_PATH.tar.gz -C $MECAB_DIC_PATH
+# cd $MECAB_DIC_PATH/mecab*
 
-echo "printf ld.so.conf"
-printf "include /etc/ld.so.conf.d/*.conf\n/usr/local/lib" > /etc/ld.so.conf 
-ldconfig
+# echo "printf ld.so.conf"
+# printf "include /etc/ld.so.conf.d/*.conf\n/usr/local/lib" > /etc/ld.so.conf 
+# ldconfig
 
-./autogen.sh
-./configure
-echo "dicdir=${MECAB_DIC_DICDIR}" > /usr/local/etc/mecabrc
+# ./autogen.sh
+# ./configure
+# echo "dicdir=${MECAB_DIC_DICDIR}" > /usr/local/etc/mecabrc
 
-sudo make install -j4
+# sudo make install -j4
 
 
