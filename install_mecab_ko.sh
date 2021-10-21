@@ -20,6 +20,8 @@ mkdir -p $MECAB_PATH
 tar zxvf $MECAB_PATH.tar.gz -C $MECAB_PATH
 cd $MECAB_PATH/*
 ./configure
+printf "include /etc/ld.so.conf.d/*.conf\n/usr/local/lib" > /etc/ld.so.conf 
+ldconfig
 sudo make install -j4
 
 # # automake
